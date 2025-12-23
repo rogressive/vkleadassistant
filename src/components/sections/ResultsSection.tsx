@@ -4,35 +4,35 @@ import { ChevronLeft, ChevronRight, Quote, TrendingUp } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Алексей Кузнецов',
-    role: 'Основатель онлайн-школы',
+    name: 'Алексей К.',
+    role: 'Онлайн-школа',
     revenue: '270 000 ₽',
-    revenueLabel: 'выручка за неделю',
-    text: 'Запустили AI-ассистента для продвижения курсов по программированию. За первую неделю получили 47 заявок — это больше, чем таргет давал за месяц. Закрыли 12 продаж на 270 000 рублей. Раньше на эту сумму уходило 3 месяца работы с рекламой.',
+    revenueLabel: 'продаж за неделю',
+    text: '47 заявок на курс за неделю. Закрыли продаж на 270 000 ₽. Раньше таргет давал 10 лидов за тот же срок — теперь в 5 раз больше при нулевых затратах на рекламу.',
     gradient: 'from-violet-500 to-purple-600',
   },
   {
-    name: 'Марина Волкова',
-    role: 'Директор по продажам, B2B оборудование',
+    name: 'Марина В.',
+    role: 'Поставки оборудования',
     revenue: '1.8 млн ₽',
-    revenueLabel: 'контракты за месяц',
-    text: 'Продаём промышленное оборудование — цикл сделки обычно 2-3 месяца. С AI-ассистентом за первый месяц закрыли 6 контрактов на поставку общей суммой 1.8 миллиона рублей. Менеджеры больше не тратят время на холодные контакты — только работа с тёплыми лидами.',
+    revenueLabel: 'выручка за месяц',
+    text: '6 контрактов на поставку оборудования за месяц — выручка 1.8 млн ₽. Менеджер больше не пишет в холодную, только обрабатывает тёплые заявки от AI-ассистента.',
     gradient: 'from-amber-400 to-orange-500',
   },
   {
-    name: 'Игорь Морозов',
-    role: 'CRM-интегратор, агентство',
+    name: 'Игорь М.',
+    role: 'CRM-интегратор',
     revenue: '950 000 ₽',
     revenueLabel: 'сделки за месяц',
-    text: 'Внедряем CRM-системы для бизнеса. Средний чек 180-200 тысяч. За месяц работы AI-ассистента закрыли 5 новых клиентов на общую сумму 950 000 рублей. Окупили внедрение с первой же продажи. Теперь масштабируем — подключаем ещё 3 аккаунта.',
+    text: 'Загрузили в систему 400 руководителей отделов продаж из ВК. За первый месяц агент довёл до встречи 21 лида, из них 5 сделок на внедрение CRM закрылись, суммарный чек — 950 000 ₽. После первой сделки все расходы на сервер и внедрение отбились.',
     gradient: 'from-emerald-400 to-green-500',
   },
   {
-    name: 'Дмитрий Петров',
-    role: 'Руководитель маркетингового агентства',
+    name: 'Дмитрий П.',
+    role: 'Маркетинговое агентство',
     revenue: '+600 000 ₽',
-    revenueLabel: 'дополнительный оборот',
-    text: 'У нас агентство полного цикла — SEO, контекст, SMM. Запустили AI-ассистента для поиска новых клиентов на SMM-услуги. За месяц подписали 19 новых договоров. Дополнительный ежемесячный оборот — плюс 600 000 рублей. Это лучшая инвестиция года.',
+    revenueLabel: 'оборот в месяц',
+    text: '19 договоров на SMM за месяц. Дополнительный ежемесячный оборот агентства вырос на 600 000 ₽. Внедрение окупилось за 3 дня.',
     gradient: 'from-pink-400 to-rose-500',
   },
 ];
@@ -50,7 +50,6 @@ const ResultsSection = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   }, []);
 
-  // Auto-play carousel
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(nextSlide, 6000);
@@ -61,15 +60,11 @@ const ResultsSection = () => {
 
   return (
     <section id="results" className="py-20 md:py-28 relative overflow-hidden bg-secondary">
-      {/* Neon border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
-      {/* Background neon blobs */}
       <div className="absolute top-20 -right-60 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[150px]" />
       <div className="absolute bottom-20 -left-60 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px]" />
       
       <div className="container-custom" ref={ref}>
-        {/* Section header */}
         <div className="text-center mb-16">
           <div
             className={`inline-flex items-center gap-2 px-5 py-2.5 glass-card glow-sm mb-6 transition-all duration-700 ${
@@ -88,7 +83,6 @@ const ResultsSection = () => {
           </h2>
         </div>
 
-        {/* Carousel */}
         <div 
           className={`max-w-4xl mx-auto transition-all duration-700 ${
             isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -97,9 +91,8 @@ const ResultsSection = () => {
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
           <div className="relative">
-            {/* Main testimonial card */}
             <div className="glass-card-strong p-8 md:p-12 neon-border relative overflow-hidden">
-              {/* Revenue highlight - BIG */}
+              {/* Revenue highlight */}
               <div className="absolute -top-2 right-8 md:right-12">
                 <div className="relative">
                   <div className={`absolute -inset-4 bg-gradient-to-r ${currentTestimonial.gradient} blur-2xl opacity-40`} />
@@ -112,17 +105,14 @@ const ResultsSection = () => {
                 </div>
               </div>
 
-              {/* Quote icon */}
               <div className="mb-6">
                 <Quote className="w-12 h-12 text-primary/30" />
               </div>
 
-              {/* Testimonial text */}
               <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-8 pr-0 md:pr-48">
                 "{currentTestimonial.text}"
               </blockquote>
 
-              {/* Author */}
               <div className="flex items-center gap-4">
                 <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${currentTestimonial.gradient} flex items-center justify-center text-white font-bold text-xl`}>
                   {currentTestimonial.name[0]}
@@ -134,7 +124,6 @@ const ResultsSection = () => {
               </div>
             </div>
 
-            {/* Navigation buttons */}
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
                 onClick={prevSlide}
@@ -143,7 +132,6 @@ const ResultsSection = () => {
                 <ChevronLeft className="w-5 h-5 text-foreground" />
               </button>
               
-              {/* Dots */}
               <div className="flex items-center gap-2">
                 {testimonials.map((_, index) => (
                   <button
