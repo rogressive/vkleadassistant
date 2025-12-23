@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import ProblemSolutionSection from '@/components/sections/ProblemSolutionSection';
 import HowItWorksSection from '@/components/sections/HowItWorksSection';
-import ScalingSection from '@/components/sections/ScalingSection';
 import ComparisonSection from '@/components/sections/ComparisonSection';
 import ResultsSection from '@/components/sections/ResultsSection';
 import WhyNoBanSection from '@/components/sections/WhyNoBanSection';
@@ -19,7 +18,6 @@ const Index = () => {
         <HeroSection />
         <ProblemSolutionSection />
         <HowItWorksSection />
-        <ScalingSection />
         <ComparisonSection />
         <ResultsSection />
         <WhyNoBanSection />
