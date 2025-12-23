@@ -63,14 +63,16 @@ const HeroSection = () => {
             <h1 className={`font-display font-black mb-4 md:mb-8 tracking-tight transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
               {/* Mobile version - short */}
               <span className="block lg:hidden text-4xl sm:text-5xl leading-[1.1]">
-                Лиды из ВК по{' '}
+                Лиды в ВК по{' '}
                 <span className="text-gradient-primary text-glow">15 ₽</span>
+                <br />
+                <span className="text-muted-foreground text-3xl sm:text-4xl">вместо 500–1200 в таргете</span>
               </span>
               {/* Desktop version - full */}
               <span className="hidden lg:block text-5xl xl:text-[90px] leading-[0.95]">
-                B2B лиды из ВКонтакте по{' '}
+                B2B-лиды из ВКонтакте по{' '}
                 <span className="text-gradient-primary text-glow">15 ₽</span>{' '}
-                <span className="text-muted-foreground">вместо 1500</span>
+                <span className="text-muted-foreground">вместо 500–1200 ₽ в таргетированной рекламе</span>
               </span>
             </h1>
 
