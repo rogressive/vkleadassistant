@@ -1,4 +1,4 @@
-import { ArrowRight, MessageSquare, Sparkles, Zap, Shield, Clock, Bot, TrendingUp } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Shield, Clock, Bot, TrendingUp, Menu, Search, MoreHorizontal, Check, CheckCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useInView } from '@/hooks/useInView';
 
@@ -130,7 +130,7 @@ const HeroSection = () => {
                 <span className="text-gradient-green font-bold">Горячий лид</span>
               </div>
 
-              {/* Main messenger interface with glassmorphism */}
+              {/* Main VK-style messenger interface */}
               <div 
                 className="relative glass-card-strong overflow-hidden"
                 style={{ 
@@ -141,40 +141,41 @@ const HeroSection = () => {
                 {/* Neon border glow */}
                 <div className="absolute inset-0 rounded-3xl border border-primary/30" />
                 
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.05] to-transparent pointer-events-none" />
-                
-                {/* Header with glass effect */}
-                <div className="relative bg-gradient-to-r from-secondary/80 via-card/60 to-secondary/80 backdrop-blur-xl px-6 py-5 border-b border-border/50">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/10 rounded-2xl flex items-center justify-center border border-primary/20 glow-sm">
-                      <MessageSquare className="w-6 h-6 text-primary" />
+                {/* VK-style Header */}
+                <div className="relative bg-[#1e1f22]/90 backdrop-blur-xl px-4 py-3 border-b border-border/50">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-3">
+                      <Menu className="w-5 h-5 text-muted-foreground" />
+                      <span className="font-semibold text-foreground text-lg">Чаты</span>
                     </div>
-                    <div>
-                      <span className="font-semibold text-foreground text-lg">Входящие заявки</span>
-                      <div className="text-sm text-muted-foreground flex items-center gap-2">
-                        <Bot className="w-3 h-3" />
-                        VK Lead Assistant
-                      </div>
+                    <div className="flex items-center gap-4">
+                      <Search className="w-5 h-5 text-muted-foreground" />
+                      <MoreHorizontal className="w-5 h-5 text-muted-foreground" />
                     </div>
-                    <span className="ml-auto bg-primary text-primary-foreground text-sm px-4 py-1.5 rounded-full font-semibold glow-sm">12 новых</span>
+                  </div>
+                  {/* VK Tabs */}
+                  <div className="flex items-center gap-1">
+                    <div className="px-3 py-1.5 bg-primary/20 rounded-full flex items-center gap-1.5">
+                      <span className="text-sm font-medium text-foreground">Все</span>
+                      <span className="bg-primary text-primary-foreground text-xs px-1.5 py-0.5 rounded-full font-semibold">12</span>
+                    </div>
+                    <div className="px-3 py-1.5 text-sm text-muted-foreground hover:bg-card/30 rounded-full transition-colors cursor-pointer">Каналы</div>
+                    <div className="px-3 py-1.5 text-sm text-muted-foreground hover:bg-card/30 rounded-full transition-colors cursor-pointer">Сообщества</div>
                   </div>
                 </div>
 
-                {/* Chat list with neon hover effects */}
-                <div className="divide-y divide-border/30">
+                {/* VK-style Chat list */}
+                <div className="divide-y divide-border/20">
                   {[
-                    { name: 'Александр М.', message: 'Здравствуйте, актуально ли предложение?', time: '2 мин', hot: true },
-                    { name: 'Елена К.', message: 'Сколько стоит внедрение CRM?', time: '5 мин', hot: true },
-                    { name: 'Дмитрий В.', message: 'Интересует оптовая закупка', time: '12 мин', hot: false },
-                    { name: 'Ольга П.', message: 'Можно подробнее о сроках?', time: '18 мин', hot: false },
+                    { name: 'Александр М.', emoji: '🔥', message: 'Вы: Здравствуйте!) Актуально ли...', time: '2м', hot: true, read: true },
+                    { name: 'Елена К.', emoji: '💼', message: 'Сколько стоит внедрение CRM?', time: '5м', hot: true, read: false },
+                    { name: 'Дмитрий В.', emoji: '', message: 'Вы: Добрый день! Интересует оп...', time: '12м', hot: false, read: true },
+                    { name: 'Ольга П.', emoji: '', message: 'Можно подробнее о сроках?', time: '18м', hot: false, read: false },
                   ].map((chat, index) => (
                     <div 
                       key={index} 
-                      className={`px-6 py-5 flex items-start gap-4 transition-all duration-300 ${
-                        chat.hot 
-                          ? 'bg-gradient-to-r from-primary/[0.08] via-primary/[0.04] to-transparent border-l-2 border-l-primary' 
-                          : 'hover:bg-card/50'
+                      className={`px-4 py-3 flex items-center gap-3 transition-all duration-300 hover:bg-card/40 ${
+                        chat.hot ? 'bg-primary/[0.06]' : ''
                       }`}
                       style={{ 
                         opacity: isInView ? 1 : 0,
@@ -182,23 +183,32 @@ const HeroSection = () => {
                         transitionDelay: `${600 + index * 100}ms`
                       }}
                     >
-                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-bold shrink-0 ${
+                      {/* Round avatar */}
+                      <div className={`relative w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
                         chat.hot 
-                          ? 'bg-gradient-to-br from-primary/30 to-primary/10 text-primary border border-primary/30' 
+                          ? 'bg-gradient-to-br from-primary to-neon-pink text-primary-foreground' 
                           : 'bg-gradient-to-br from-muted to-card text-muted-foreground'
                       }`}>
                         {chat.name[0]}
+                        {chat.hot && (
+                          <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-neon-green border-2 border-[#1a1a2e]" />
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <span className="font-semibold text-foreground">{chat.name}</span>
-                          <span className="text-xs text-muted-foreground">{chat.time}</span>
+                        <div className="flex items-center justify-between gap-2 mb-0.5">
+                          <span className="font-semibold text-foreground flex items-center gap-1">
+                            {chat.name}
+                            {chat.emoji && <span>{chat.emoji}</span>}
+                          </span>
+                          <div className="flex items-center gap-1.5">
+                            {chat.read && (
+                              <CheckCheck className="w-4 h-4 text-primary" />
+                            )}
+                            <span className="text-xs text-muted-foreground">{chat.time}</span>
+                          </div>
                         </div>
                         <p className="text-sm text-muted-foreground truncate">{chat.message}</p>
                       </div>
-                      {chat.hot && (
-                        <span className="shrink-0 w-3 h-3 rounded-full bg-neon-green mt-2 animate-pulse glow-green" />
-                      )}
                     </div>
                   ))}
                 </div>
@@ -227,38 +237,43 @@ const HeroSection = () => {
             {/* Glow effect */}
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-neon-pink/10 to-transparent rounded-2xl blur-2xl" />
             
-            {/* Mini messenger card */}
+            {/* VK-style Mini messenger card */}
             <div className="relative glass-card-strong overflow-hidden rounded-2xl">
-              {/* Header */}
-              <div className="bg-gradient-to-r from-secondary/80 to-card/60 backdrop-blur-xl px-4 py-3 border-b border-border/50 flex items-center gap-3">
-                <div className="w-9 h-9 bg-gradient-to-br from-primary/30 to-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
-                  <MessageSquare className="w-4 h-4 text-primary" />
+              {/* VK Header */}
+              <div className="bg-[#1e1f22]/90 backdrop-blur-xl px-4 py-2.5 border-b border-border/50">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-foreground text-sm">Чаты</span>
+                  <div className="px-2 py-0.5 bg-primary/20 rounded-full flex items-center gap-1">
+                    <span className="text-xs text-foreground">Все</span>
+                    <span className="bg-primary text-primary-foreground text-[10px] px-1 rounded-full font-semibold">12</span>
+                  </div>
                 </div>
-                <span className="font-semibold text-foreground text-sm">Входящие заявки</span>
-                <span className="ml-auto bg-primary text-primary-foreground text-xs px-2.5 py-1 rounded-full font-semibold">12</span>
               </div>
               
-              {/* Messages - only 2 for mobile */}
-              <div className="divide-y divide-border/30">
+              {/* VK Messages - only 2 for mobile */}
+              <div className="divide-y divide-border/20">
                 {[
-                  { name: 'Александр М.', message: 'Здравствуйте, актуально?', time: '2 мин', hot: true },
-                  { name: 'Елена К.', message: 'Сколько стоит CRM?', time: '5 мин', hot: true },
+                  { name: 'Александр 🔥', message: 'Вы: Здравствуйте!)', time: '2м', read: true },
+                  { name: 'Елена 💼', message: 'Сколько стоит CRM?', time: '5м', read: false },
                 ].map((chat, index) => (
                   <div 
                     key={index} 
-                    className="px-4 py-3 flex items-center gap-3 bg-gradient-to-r from-primary/[0.06] to-transparent border-l-2 border-l-primary"
+                    className="px-3 py-2.5 flex items-center gap-2.5 bg-primary/[0.04]"
                   >
-                    <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 bg-gradient-to-br from-primary/30 to-primary/10 text-primary border border-primary/30">
+                    <div className="relative w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0 bg-gradient-to-br from-primary to-neon-pink text-primary-foreground">
                       {chat.name[0]}
+                      <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-neon-green border-2 border-[#1a1a2e]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="font-medium text-foreground text-sm">{chat.name}</span>
-                        <span className="text-xs text-muted-foreground">{chat.time}</span>
+                        <span className="font-medium text-foreground text-xs">{chat.name}</span>
+                        <div className="flex items-center gap-1">
+                          {chat.read && <CheckCheck className="w-3 h-3 text-primary" />}
+                          <span className="text-[10px] text-muted-foreground">{chat.time}</span>
+                        </div>
                       </div>
-                      <p className="text-xs text-muted-foreground truncate">{chat.message}</p>
+                      <p className="text-[11px] text-muted-foreground truncate">{chat.message}</p>
                     </div>
-                    <span className="shrink-0 w-2 h-2 rounded-full bg-neon-green animate-pulse" />
                   </div>
                 ))}
               </div>
