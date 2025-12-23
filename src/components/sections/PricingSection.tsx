@@ -1,11 +1,9 @@
 import { useInView } from '@/hooks/useInView';
-import { Check, Zap } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import CountdownTimer from '@/components/CountdownTimer';
 
 const PricingSection = () => {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.2 });
-  const targetDate = new Date('2025-12-31T23:59:59');
 
   const features = [
     'Полная настройка системы под вашу нишу',
@@ -16,61 +14,50 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="section-padding relative overflow-hidden">
+    <section id="pricing" className="section-padding relative overflow-hidden bg-secondary">
       <div className="container-custom" ref={ref}>
         <div className="text-center mb-16">
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <span className="text-gradient-gold">Специальное</span> предложение
+          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 tracking-tight transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            Стоимость <span className="text-primary">внедрения</span>
           </h2>
         </div>
 
         <div className={`max-w-xl mx-auto transition-all duration-700 delay-200 ${isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <div className="relative p-8 rounded-2xl bg-card border-2 border-accent/50 glow-gold">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent text-accent-foreground text-sm font-bold">
-              <Zap className="w-4 h-4 inline mr-1" />
-              Акция до 31.12.2025
-            </div>
-
-            <div className="text-center mb-8 pt-4">
-              <div className="text-2xl text-muted-foreground line-through mb-2">40 000 ₽</div>
-              <div className="text-5xl font-display font-bold text-gradient-gold mb-4">20 000 ₽</div>
+          <div className="relative p-8 bg-card border border-border rounded-lg">
+            <div className="text-center mb-8">
+              <div className="text-4xl md:text-5xl font-display font-bold text-foreground mb-2">
+                Внедрение под ключ — 20 000 ₽
+              </div>
               <div className="text-muted-foreground">единоразовый платёж</div>
             </div>
 
             <ul className="space-y-3 mb-8">
               {features.map((feature) => (
                 <li key={feature} className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-accent shrink-0" />
+                  <Check className="w-5 h-5 text-primary shrink-0" />
                   <span className="text-foreground">{feature}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="p-4 rounded-xl bg-secondary/50 mb-6">
-              <div className="text-sm text-muted-foreground mb-3 text-center">Ежемесячные расходы:</div>
-              <div className="space-y-2 text-sm">
+            {/* Transparent expenses */}
+            <div className="p-6 bg-secondary rounded-lg mb-6">
+              <div className="font-display font-bold text-foreground mb-4">Прозрачные расходы</div>
+              <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Сервер (VPS)</span>
                   <span className="text-foreground">~300 ₽/мес</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">API GPT</span>
-                  <span className="text-foreground">700–1 500 ₽/мес</span>
-                </div>
-                <div className="flex justify-between pt-2 border-t border-border">
-                  <span className="font-medium text-foreground">Итого</span>
-                  <span className="font-display font-bold text-accent">1 000–2 000 ₽/мес</span>
+                  <span className="text-muted-foreground">API (AI)</span>
+                  <span className="text-foreground">~700–1 500 ₽/мес</span>
                 </div>
               </div>
             </div>
 
-            <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 pulse-glow">
-              <a href="#contact">Получить доступ</a>
+            <Button asChild className="w-full btn-primary">
+              <a href="#contact">Заказать внедрение</a>
             </Button>
-
-            <div className="mt-6 flex justify-center">
-              <CountdownTimer targetDate={targetDate} compact />
-            </div>
           </div>
         </div>
       </div>
