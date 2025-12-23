@@ -27,7 +27,7 @@ const HeroSection = () => {
         <span className="text-sm font-medium text-foreground">Автоматизация 24/7</span>
       </div>
       
-      <div className={`absolute bottom-48 left-[8%] hidden lg:flex items-center gap-2 px-5 py-3 glass-card glow-green float-medium transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '800ms' }}>
+      <div className={`absolute bottom-48 left-[35%] hidden lg:flex items-center gap-2 px-5 py-3 glass-card glow-green float-medium transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '800ms' }}>
         <Shield className="w-4 h-4 text-neon-green" />
         <span className="text-sm font-medium text-foreground">Без блокировок</span>
       </div>
@@ -206,7 +206,7 @@ const HeroSection = () => {
               
               {/* Floating stats badge with neon glow */}
               <div 
-                className={`absolute -bottom-8 -left-8 px-6 py-4 glass-card-strong glow-green flex items-center gap-4 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`absolute -bottom-8 left-16 px-6 py-4 glass-card-strong glow-green flex items-center gap-4 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: '1000ms' }}
               >
                 <div className="w-12 h-12 rounded-xl bg-neon-green/20 flex items-center justify-center border border-neon-green/30">
