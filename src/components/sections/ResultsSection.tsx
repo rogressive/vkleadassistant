@@ -37,7 +37,7 @@ const testimonials = [
     revenueLabel: 'оборот в месяц',
     text: 'Запустили агента по базе владельцев онлайн-проектов. За месяц получили 96 диалогов, из них 19 перешли в договор на ведение SMM. Дополнительный ежемесячный оборот агентства вырос примерно на 600 000 ₽ — внедрение окупилось за 3 дня.',
     gradient: 'from-pink-400 to-rose-500',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face',
   },
   {
     name: 'Елена С.',
