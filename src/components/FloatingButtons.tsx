@@ -1,0 +1,33 @@
+import { MessageCircle } from 'lucide-react';
+
+const FloatingButtons = () => {
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+      {/* Telegram */}
+      <a
+        href="https://t.me/sunberry_vik"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#0088cc]/90 flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 group"
+        title="Написать в Telegram"
+      >
+        <MessageCircle className="w-6 h-6 text-white" />
+      </a>
+
+      {/* VK */}
+      <a
+        href="https://vk.me/id1080125063"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 glow-primary"
+        title="Написать в ВК"
+      >
+        <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.525-2.049-1.714-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.684 4 8.262c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.678.847 2.49 2.27 4.675 2.853 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.049.17.475-.085.72-.576.72z"/>
+        </svg>
+      </a>
+    </div>
+  );
+};
+
+export default FloatingButtons;
