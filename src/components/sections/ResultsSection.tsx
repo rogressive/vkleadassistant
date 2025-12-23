@@ -1,58 +1,66 @@
 import { useInView } from '@/hooks/useInView';
-import { GraduationCap, Package, Settings, Megaphone, TrendingUp, Sparkles } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { ChevronLeft, ChevronRight, Quote, TrendingUp } from 'lucide-react';
 
-const results = [
+const testimonials = [
   {
-    name: 'Алексей К.',
-    role: 'Онлайн-школа',
-    shortText: '47 заявок на курс за неделю. Закрыли продаж на',
+    name: 'Алексей Кузнецов',
+    role: 'Основатель онлайн-школы',
     revenue: '270 000 ₽',
-    subtext: 'Раньше таргет давал 10 лидов.',
-    icon: GraduationCap,
-    gradient: 'from-violet-400 to-purple-500',
-    glowColor: 'primary',
-    borderColor: 'border-violet-500/30',
+    revenueLabel: 'выручка за неделю',
+    text: 'Запустили AI-ассистента для продвижения курсов по программированию. За первую неделю получили 47 заявок — это больше, чем таргет давал за месяц. Закрыли 12 продаж на 270 000 рублей. Раньше на эту сумму уходило 3 месяца работы с рекламой.',
+    gradient: 'from-violet-500 to-purple-600',
   },
   {
-    name: 'Марина В.',
-    role: 'Оборудование',
-    shortText: '6 контрактов на поставку за месяц — выручка',
+    name: 'Марина Волкова',
+    role: 'Директор по продажам, B2B оборудование',
     revenue: '1.8 млн ₽',
-    subtext: 'Менеджер больше не пишет в холодную.',
-    icon: Package,
+    revenueLabel: 'контракты за месяц',
+    text: 'Продаём промышленное оборудование — цикл сделки обычно 2-3 месяца. С AI-ассистентом за первый месяц закрыли 6 контрактов на поставку общей суммой 1.8 миллиона рублей. Менеджеры больше не тратят время на холодные контакты — только работа с тёплыми лидами.',
     gradient: 'from-amber-400 to-orange-500',
-    glowColor: 'gold',
-    borderColor: 'border-amber-500/30',
   },
   {
-    name: 'Игорь М.',
-    role: 'CRM-интегратор',
-    shortText: '5 сделок на',
+    name: 'Игорь Морозов',
+    role: 'CRM-интегратор, агентство',
     revenue: '950 000 ₽',
-    subtext: 'за месяц. Окупили внедрение с первой же продажи.',
-    icon: Settings,
+    revenueLabel: 'сделки за месяц',
+    text: 'Внедряем CRM-системы для бизнеса. Средний чек 180-200 тысяч. За месяц работы AI-ассистента закрыли 5 новых клиентов на общую сумму 950 000 рублей. Окупили внедрение с первой же продажи. Теперь масштабируем — подключаем ещё 3 аккаунта.',
     gradient: 'from-emerald-400 to-green-500',
-    glowColor: 'green',
-    borderColor: 'border-emerald-500/30',
   },
   {
-    name: 'Дмитрий П.',
-    role: 'Маркетинговое агентство',
-    shortText: '19 договоров на SMM за месяц. Дополнительный оборот',
+    name: 'Дмитрий Петров',
+    role: 'Руководитель маркетингового агентства',
     revenue: '+600 000 ₽',
-    subtext: '',
-    icon: Megaphone,
+    revenueLabel: 'дополнительный оборот',
+    text: 'У нас агентство полного цикла — SEO, контекст, SMM. Запустили AI-ассистента для поиска новых клиентов на SMM-услуги. За месяц подписали 19 новых договоров. Дополнительный ежемесячный оборот — плюс 600 000 рублей. Это лучшая инвестиция года.',
     gradient: 'from-pink-400 to-rose-500',
-    glowColor: 'pink',
-    borderColor: 'border-pink-500/30',
   },
 ];
 
 const ResultsSection = () => {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  // Auto-play carousel
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(nextSlide, 6000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, nextSlide]);
+
+  const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section id="results" className="section-padding relative overflow-hidden bg-secondary">
+    <section id="results" className="py-20 md:py-28 relative overflow-hidden bg-secondary">
       {/* Neon border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
@@ -60,12 +68,9 @@ const ResultsSection = () => {
       <div className="absolute top-20 -right-60 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[150px]" />
       <div className="absolute bottom-20 -left-60 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px]" />
       
-      {/* Particles */}
-      <div className="absolute inset-0 particles opacity-40" />
-      
       <div className="container-custom" ref={ref}>
         {/* Section header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <div
             className={`inline-flex items-center gap-2 px-5 py-2.5 glass-card glow-sm mb-6 transition-all duration-700 ${
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -75,84 +80,91 @@ const ResultsSection = () => {
             <span className="text-sm font-semibold text-foreground">Реальные результаты</span>
           </div>
           <h2
-            className={`text-4xl md:text-5xl lg:text-7xl font-display font-black mb-6 tracking-tight transition-all duration-700 ${
+            className={`text-4xl md:text-5xl lg:text-6xl font-display font-black mb-6 tracking-tight transition-all duration-700 ${
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             Результаты <span className="text-gradient-neon text-glow">клиентов</span>
           </h2>
-          <p
-            className={`text-lg text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-100 ${
-              isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            Цифры основаны на запуске по заранее собранным базам (Target Hunter + VK Lead Assistant)
-          </p>
         </div>
 
-        {/* 2x2 Grid with neon cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {results.map((result, index) => {
-            const IconComponent = result.icon;
-            return (
-              <div
-                key={result.name}
-                className={`group relative transition-all duration-700 ${
-                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-                }`}
-                style={{ transitionDelay: `${(index + 2) * 100}ms` }}
-              >
-                {/* Card with neon border effect */}
-                <div className={`relative p-8 glass-card-strong neon-border transition-all duration-500 hover:-translate-y-3 overflow-hidden ${result.borderColor}`}>
-                  {/* Neon glow on hover */}
-                  <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                  
-                  {/* Content */}
-                  <div className="relative">
-                    {/* Revenue badge - prominent with neon */}
-                    <div className={`absolute -top-4 -right-4 px-5 py-2.5 glass-card border ${result.borderColor} rounded-xl glow-sm group-hover:scale-105 transition-transform duration-300`}>
-                      <span className={`text-xl md:text-2xl font-display font-black bg-gradient-to-r ${result.gradient} bg-clip-text text-transparent`}>
-                        {result.revenue}
-                      </span>
+        {/* Carousel */}
+        <div 
+          className={`max-w-4xl mx-auto transition-all duration-700 ${
+            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+        >
+          <div className="relative">
+            {/* Main testimonial card */}
+            <div className="glass-card-strong p-8 md:p-12 neon-border relative overflow-hidden">
+              {/* Revenue highlight - BIG */}
+              <div className="absolute -top-2 right-8 md:right-12">
+                <div className="relative">
+                  <div className={`absolute -inset-4 bg-gradient-to-r ${currentTestimonial.gradient} blur-2xl opacity-40`} />
+                  <div className="relative glass-card px-6 py-4 border-2 border-primary/30 glow-md">
+                    <div className={`text-3xl md:text-4xl lg:text-5xl font-display font-black bg-gradient-to-r ${currentTestimonial.gradient} bg-clip-text text-transparent`}>
+                      {currentTestimonial.revenue}
                     </div>
-
-                    {/* Header */}
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${result.gradient} bg-opacity-20 border ${result.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 glow-sm`}
-                        style={{ background: `linear-gradient(135deg, hsl(var(--${result.glowColor === 'primary' ? 'primary' : result.glowColor === 'green' ? 'neon-green' : result.glowColor === 'pink' ? 'neon-pink' : 'gold'}) / 0.2), transparent)` }}
-                      >
-                        <IconComponent className={`w-7 h-7 bg-gradient-to-r ${result.gradient} bg-clip-text`} style={{ color: result.glowColor === 'primary' ? 'hsl(var(--primary))' : result.glowColor === 'green' ? 'hsl(var(--neon-green))' : result.glowColor === 'pink' ? 'hsl(var(--neon-pink))' : 'hsl(var(--gold))' }} />
-                      </div>
-                      <div>
-                        <div className="font-display font-bold text-foreground text-lg">{result.name}</div>
-                        <div className="text-sm text-muted-foreground">{result.role}</div>
-                      </div>
-                    </div>
-
-                    {/* Quote */}
-                    <p className="text-foreground leading-relaxed text-base">
-                      {result.shortText}{' '}
-                      <span className={`font-bold bg-gradient-to-r ${result.gradient} bg-clip-text text-transparent`}>
-                        {result.revenue}
-                      </span>
-                      {result.subtext && (
-                        <span className="text-muted-foreground">. {result.subtext}</span>
-                      )}
-                    </p>
+                    <div className="text-sm text-muted-foreground mt-1">{currentTestimonial.revenueLabel}</div>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
-        
-        {/* Bottom CTA hint */}
-        <div className={`text-center mt-16 transition-all duration-700 ${
-          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`} style={{ transitionDelay: '800ms' }}>
-          <div className="inline-flex items-center gap-2 text-muted-foreground">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span>Ваш бизнес может быть следующим</span>
+
+              {/* Quote icon */}
+              <div className="mb-6">
+                <Quote className="w-12 h-12 text-primary/30" />
+              </div>
+
+              {/* Testimonial text */}
+              <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-8 pr-0 md:pr-48">
+                "{currentTestimonial.text}"
+              </blockquote>
+
+              {/* Author */}
+              <div className="flex items-center gap-4">
+                <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${currentTestimonial.gradient} flex items-center justify-center text-white font-bold text-xl`}>
+                  {currentTestimonial.name[0]}
+                </div>
+                <div>
+                  <div className="font-display font-bold text-foreground text-lg">{currentTestimonial.name}</div>
+                  <div className="text-muted-foreground">{currentTestimonial.role}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Navigation buttons */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <button
+                onClick={prevSlide}
+                className="w-12 h-12 rounded-full glass-card border border-border/50 flex items-center justify-center hover:border-primary/50 hover:glow-sm transition-all duration-300"
+              >
+                <ChevronLeft className="w-5 h-5 text-foreground" />
+              </button>
+              
+              {/* Dots */}
+              <div className="flex items-center gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentIndex 
+                        ? 'w-8 bg-primary glow-sm' 
+                        : 'w-2 bg-border hover:bg-primary/50'
+                    }`}
+                  />
+                ))}
+              </div>
+              
+              <button
+                onClick={nextSlide}
+                className="w-12 h-12 rounded-full glass-card border border-border/50 flex items-center justify-center hover:border-primary/50 hover:glow-sm transition-all duration-300"
+              >
+                <ChevronRight className="w-5 h-5 text-foreground" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
