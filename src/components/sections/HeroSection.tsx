@@ -167,10 +167,10 @@ const HeroSection = () => {
                 {/* VK-style Chat list */}
                 <div className="divide-y divide-border/20">
                   {[
-                    { name: 'Александр М.', emoji: '🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', hot: true, avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=48&h=48&fit=crop&crop=face' },
-                    { name: 'Елена К.', emoji: '💼', message: 'Сколько стоит внедрение CRM?', time: '5м', hot: true, avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=48&h=48&fit=crop&crop=face' },
-                    { name: 'Дмитрий В.', emoji: '', message: 'Добрый день! Интересует оптовая...', time: '12м', hot: false, avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face' },
-                    { name: 'Ольга П.', emoji: '', message: 'Можно подробнее о сроках?', time: '18м', hot: false, avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=48&h=48&fit=crop&crop=face' },
+                    { name: 'Александр М.', emoji: '🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', hot: true, avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces&facepad=2' },
+                    { name: 'Елена К.', emoji: '💼', message: 'Сколько стоит внедрение CRM?', time: '5м', hot: true, avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces&facepad=2' },
+                    { name: 'Дмитрий В.', emoji: '', message: 'Добрый день! Интересует оптовая...', time: '12м', hot: false, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces&facepad=2' },
+                    { name: 'Ольга П.', emoji: '', message: 'Можно подробнее о сроках?', time: '18м', hot: false, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces&facepad=2' },
                   ].map((chat, index) => (
                     <div 
                       key={index} 
@@ -248,8 +248,8 @@ const HeroSection = () => {
               {/* VK Messages - only 2 for mobile */}
               <div className="divide-y divide-border/20">
                 {[
-                  { name: 'Александр 🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=36&h=36&fit=crop&crop=face' },
-                  { name: 'Елена 💼', message: 'Сколько стоит CRM?', time: '5м', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=36&h=36&fit=crop&crop=face' },
+                  { name: 'Александр 🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces&facepad=2' },
+                  { name: 'Елена 💼', message: 'Сколько стоит CRM?', time: '5м', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces&facepad=2' },
                 ].map((chat, index) => (
                   <div 
                     key={index} 
