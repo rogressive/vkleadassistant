@@ -68,9 +68,12 @@ export default {
         success: "hsl(var(--success))",
       },
       borderRadius: {
-        lg: "6px",
-        md: "4px",
-        sm: "2px",
+        "3xl": "24px",
+        "2xl": "16px",
+        xl: "12px",
+        lg: "8px",
+        md: "6px",
+        sm: "4px",
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
