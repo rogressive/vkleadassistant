@@ -206,7 +206,7 @@ const HeroSection = () => {
               
               {/* Floating stats badge with neon glow */}
               <div 
-                className={`absolute -bottom-4 left-[35%] px-6 py-4 glass-card-strong glow-green flex items-center gap-4 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`absolute -bottom-12 left-[35%] px-6 py-4 glass-card-strong glow-green flex items-center gap-4 float-medium transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: '1000ms' }}
               >
                 <div className="w-12 h-12 rounded-xl bg-neon-green/20 flex items-center justify-center border border-neon-green/30">
