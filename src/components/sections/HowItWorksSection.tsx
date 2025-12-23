@@ -1,36 +1,42 @@
 import { useInView } from '@/hooks/useInView';
-import { Search, Filter, MessageCircle, FileText, MessagesSquare } from 'lucide-react';
+import { Search, Brain, MessageCircle, UserPlus, Send, Trash2 } from 'lucide-react';
 
 const steps = [
   {
     icon: Search,
-    title: 'Парсинг',
-    description: 'AI находит посты и комментарии с ключевыми словами вашей ниши',
+    title: 'Парсинг базы',
+    description: 'Вы собираете подписчиков конкурентов и активных в нишевых группах через Target Hunter',
     color: 'primary',
   },
   {
-    icon: Filter,
-    title: 'Фильтрация',
-    description: 'Отсеиваем ботов, конкурентов и нецелевую аудиторию',
+    icon: Brain,
+    title: 'AI анализирует профиль',
+    description: 'Читает 20 последних постов и раздел «О себе» — определяет деятельность и интересы',
     color: 'primary',
   },
   {
     icon: MessageCircle,
-    title: 'Комментарий',
-    description: 'Генерируем уникальный релевантный комментарий под каждый пост',
+    title: 'Уникальный вопрос',
+    description: 'AI пишет осмысленный вопрос под пост человека — не рекламу, а живой интерес',
     color: 'primary',
   },
   {
-    icon: FileText,
-    title: 'Заявка',
-    description: 'Отправляем персонализированный оффер в личные сообщения',
+    icon: UserPlus,
+    title: 'Заявка в друзья',
+    description: 'После комментария отправляем заявку + лайк поста — выглядит естественно',
     color: 'primary',
   },
   {
-    icon: MessagesSquare,
-    title: 'Диалог',
-    description: 'AI ведёт переписку и квалифицирует лида до готовности к сделке',
+    icon: Send,
+    title: 'Сообщение друзьям',
+    description: 'Персонализированный оффер ТОЛЬКО тем, кто добавился в друзья — никакого спама',
     color: 'accent',
+  },
+  {
+    icon: Trash2,
+    title: 'Очистка заявок',
+    description: 'Автоматическое удаление исходящих заявок, которые не приняли — аккаунт чистый',
+    color: 'primary',
   },
 ];
 
@@ -59,7 +65,7 @@ const HowItWorksSection = () => {
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            5 простых шагов от поста до сделки — всё на полном автопилоте
+            6 шагов от сбора базы до продажи — всё на автопилоте
           </p>
         </div>
 
@@ -68,7 +74,7 @@ const HowItWorksSection = () => {
           {/* Connection line */}
           <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent -translate-y-1/2" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {steps.map((step, index) => (
               <div
                 key={step.title}
