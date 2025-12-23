@@ -10,6 +10,7 @@ const testimonials = [
     revenueLabel: 'сделки за месяц',
     text: 'Загрузили в систему 400 руководителей отделов продаж из ВК. За первый месяц агент довёл до встречи 21 лида, из них 5 сделок на внедрение CRM закрылись, суммарный чек — 950 000 ₽. После первой сделки все расходы на сервер и внедрение отбились.',
     gradient: 'from-emerald-400 to-green-500',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face',
   },
   {
     name: 'Алексей К.',
@@ -18,6 +19,7 @@ const testimonials = [
     revenueLabel: 'продаж за 2 недели',
     text: 'Загрузили в VK Lead Assistant базу 1 200 подписчиков конкурирующих школ. За две недели получили 47 заявок на курс и закрыли 9 продаж на сумму 270 000 ₽. Раньше таргет давал 10–15 лидов в месяц и едва окупал себя.',
     gradient: 'from-violet-500 to-purple-600',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
   },
   {
     name: 'Марина В.',
@@ -26,6 +28,7 @@ const testimonials = [
     revenueLabel: 'выручка за месяц',
     text: 'Передали агенту список из 800 ресторанов из Target Hunter. За первый месяц вышли на 32 плотных диалога и подписали 6 контрактов на поставку — это ~1,8 млн ₽ выручки. Раньше менеджер тратил на холодные сообщения по 3–4 часа в день, сейчас всё делает бот.',
     gradient: 'from-amber-400 to-orange-500',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face',
   },
   {
     name: 'Дмитрий П.',
@@ -34,6 +37,7 @@ const testimonials = [
     revenueLabel: 'оборот в месяц',
     text: 'Запустили агента по базе владельцев онлайн-проектов. За месяц получили 96 диалогов, из них 19 перешли в договор на ведение SMM. Дополнительный ежемесячный оборот агентства вырос примерно на 600 000 ₽ — внедрение окупилось за 3 дня.',
     gradient: 'from-pink-400 to-rose-500',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
   },
   {
     name: 'Елена С.',
@@ -42,6 +46,7 @@ const testimonials = [
     revenueLabel: 'за 10 дней',
     text: 'Собрала через Target Hunter 500 владельцев бизнес-страниц ВК и отдала их в работу агенту. За 10 дней пришло 14 запросов на настройку рекламы, из них 7 клиентов оплатили ведение от 25 000 ₽. До этого я месяцами искала таких клиентов вручную.',
     gradient: 'from-cyan-400 to-blue-500',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face',
   },
 ];
 
@@ -122,8 +127,12 @@ const ResultsSection = () => {
               </blockquote>
 
               <div className="flex items-center gap-4">
-                <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${currentTestimonial.gradient} flex items-center justify-center text-white font-bold text-xl`}>
-                  {currentTestimonial.name[0]}
+                <div className={`relative w-14 h-14 rounded-full p-0.5 bg-gradient-to-br ${currentTestimonial.gradient}`}>
+                  <img 
+                    src={currentTestimonial.avatar} 
+                    alt={currentTestimonial.name}
+                    className="w-full h-full rounded-full object-cover"
+                  />
                 </div>
                 <div>
                   <div className="font-display font-bold text-foreground text-lg">{currentTestimonial.name}</div>
