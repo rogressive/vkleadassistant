@@ -69,10 +69,11 @@ const HeroSection = () => {
                 <span className="text-muted-foreground text-3xl sm:text-4xl">вместо 500–1200 в таргете</span>
               </span>
               {/* Desktop version - full */}
-              <span className="hidden lg:block text-5xl xl:text-[90px] leading-[0.95]">
+              <span className="hidden lg:block text-5xl xl:text-6xl 2xl:text-7xl leading-[1.1]">
                 B2B-лиды из ВКонтакте по{' '}
-                <span className="text-gradient-primary text-glow">15 ₽</span>{' '}
-                <span className="text-muted-foreground">вместо 500–1200 ₽ в таргетированной рекламе</span>
+                <span className="text-gradient-primary text-glow">15 ₽</span>
+                <br />
+                <span className="text-muted-foreground text-4xl xl:text-5xl 2xl:text-6xl">вместо 500–1200 ₽ в таргете</span>
               </span>
             </h1>
 
