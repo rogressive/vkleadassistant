@@ -169,7 +169,7 @@ const HeroSection = () => {
                   {[
                     { name: 'Александр М.', emoji: '🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', hot: true, avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces&facepad=2' },
                     { name: 'Елена К.', emoji: '💼', message: 'Сколько стоит внедрение CRM?', time: '5м', hot: true, avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces&facepad=2' },
-                    { name: 'Дмитрий В.', emoji: '', message: 'Добрый день! Интересует оптовая...', time: '12м', hot: false, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces&facepad=2' },
+                    { name: 'Дмитрий В.', emoji: '', message: 'Добрый день! Интересует оптовая...', time: '12м', hot: false, avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces&facepad=2' },
                     { name: 'Ольга П.', emoji: '', message: 'Можно подробнее о сроках?', time: '18м', hot: false, avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces&facepad=2' },
                   ].map((chat, index) => (
                     <div 
