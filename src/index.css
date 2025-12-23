@@ -4,15 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* VK Lead Assistant Design System - Light B2B Theme (Square Style) */
+/* VK Lead Assistant Design System - Premium B2B Theme */
 
 @layer base {
   :root {
-    /* Light B2B base - чистый белый */
+    /* Premium B2B base */
     --background: 0 0% 100%;
     --foreground: 222 47% 11%;
 
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
@@ -22,7 +22,8 @@
     --primary: 211 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
+    /* Light gray for sections */
+    --secondary: 220 20% 97%;
     --secondary-foreground: 222 47% 11%;
 
     --muted: 220 14% 96%;
@@ -32,7 +33,7 @@
     --accent: 211 100% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 13% 91%;
@@ -41,12 +42,27 @@
 
     --radius: 6px;
 
-    /* Custom colors */
+    /* Custom premium colors */
     --vk-blue: 211 100% 50%;
     --vk-blue-light: 211 100% 60%;
     --gold: 45 93% 58%;
     --gold-light: 45 93% 68%;
     --success: 142 76% 36%;
+    
+    /* Premium gradients */
+    --gradient-hero: linear-gradient(180deg, hsl(220 20% 99%) 0%, hsl(220 20% 96%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(211 100% 50%) 0%, hsl(211 100% 60%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 20% 99%) 100%);
+    
+    /* Premium shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.07), 0 2px 4px -2px hsl(0 0% 0% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.08), 0 4px 6px -4px hsl(0 0% 0% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.1), 0 8px 10px -6px hsl(0 0% 0% / 0.08);
+    --shadow-2xl: 0 25px 50px -12px hsl(0 0% 0% / 0.15);
+    --shadow-glow: 0 0 40px hsl(211 100% 50% / 0.15);
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.04), 0 4px 12px hsl(0 0% 0% / 0.06);
+    --shadow-card-hover: 0 4px 8px hsl(0 0% 0% / 0.04), 0 12px 32px hsl(0 0% 0% / 0.1);
   }
 }
 
@@ -66,28 +82,32 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', 'Inter', sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
 @layer utilities {
-  /* Gradient text - subtle blue */
+  /* Gradient text */
   .text-gradient-primary {
-    @apply text-primary;
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
   }
 
-  .text-gradient-gold {
-    @apply text-primary;
-  }
-
-  /* Card hover effect - subtle */
-  .card-hover {
-    @apply transition-all duration-300;
+  /* Premium card styles */
+  .card-premium {
+    @apply bg-card border border-border transition-all duration-300;
+    box-shadow: var(--shadow-card);
+    border-radius: 12px;
   }
   
-  .card-hover:hover {
+  .card-premium:hover {
+    box-shadow: var(--shadow-card-hover);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply backdrop-blur-xl bg-background/80;
   }
 
   /* Fade in up animation */
@@ -110,7 +130,7 @@
 
   /* Section padding */
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-24 md:py-32 lg:py-40;
   }
 
   /* Container */
@@ -118,15 +138,53 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  /* B2B Button styles */
+  /* Premium Button styles */
   .btn-primary {
-    @apply bg-foreground text-background hover:bg-foreground/90 font-semibold h-14 px-8 text-base;
-    border-radius: 6px;
+    @apply bg-foreground text-background hover:bg-foreground/90 font-semibold h-14 px-8 text-base transition-all duration-200;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
   }
 
   .btn-outline {
-    @apply bg-background text-foreground border-2 border-border hover:border-foreground font-semibold h-14 px-8 text-base;
-    border-radius: 6px;
+    @apply bg-background text-foreground border-2 border-border hover:border-foreground/30 font-semibold h-14 px-8 text-base transition-all duration-200;
+    border-radius: 8px;
+  }
+  
+  .btn-outline:hover {
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Decorative grid */
+  .decorative-grid {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Premium section backgrounds */
+  .section-alt {
+    background: linear-gradient(180deg, hsl(220 20% 98.5%) 0%, hsl(220 20% 97%) 100%);
+  }
+
+  /* Glow effect */
+  .glow-primary {
+    box-shadow: 0 0 60px hsl(211 100% 50% / 0.2);
+  }
+
+  /* 3D perspective */
+  .perspective-3d {
+    perspective: 1200px;
+  }
+
+  .transform-3d {
+    transform: rotateY(-8deg) rotateX(4deg);
+    transform-style: preserve-3d;
   }
 }
 
@@ -161,6 +219,6 @@
 
 /* Selection */
 ::selection {
-  background: hsl(var(--primary) / 0.2);
+  background: hsl(var(--primary) / 0.15);
   color: hsl(var(--foreground));
 }
