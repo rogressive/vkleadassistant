@@ -1,10 +1,7 @@
-import { ArrowRight, Zap, TrendingUp } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import CountdownTimer from '@/components/CountdownTimer';
 
 const HeroSection = () => {
-  const targetDate = new Date('2025-12-31T23:59:59');
-
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-gradient-animated">
       {/* Background decorations */}
@@ -38,20 +35,8 @@ const HeroSection = () => {
             конвертирует в заявки. <span className="text-foreground font-medium">От 15₽ за лид</span> вместо 1500₽ в таргете.
           </p>
 
-          {/* Price block */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 animate-fade-in-up delay-300">
-            <div className="flex items-center gap-3">
-              <span className="text-2xl md:text-3xl text-muted-foreground line-through">40 000₽</span>
-              <span className="text-4xl md:text-5xl font-display font-bold text-gradient-gold">20 000₽</span>
-            </div>
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/20 border border-success/30">
-              <TrendingUp className="w-4 h-4 text-success" />
-              <span className="text-sm font-medium text-success">Экономия 50%</span>
-            </div>
-          </div>
-
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in-up delay-400">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up delay-300">
             <Button
               asChild
               size="lg"
@@ -72,13 +57,6 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Countdown Timer */}
-          <div className="animate-fade-in-up delay-500">
-            <p className="text-sm text-muted-foreground mb-4">Осталось до конца акции:</p>
-            <div className="flex justify-center">
-              <CountdownTimer targetDate={targetDate} />
-            </div>
-          </div>
         </div>
       </div>
 
