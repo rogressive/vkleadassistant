@@ -1,5 +1,5 @@
 import { useInView } from '@/hooks/useInView';
-import { GraduationCap, Package, Settings, Megaphone, TrendingUp } from 'lucide-react';
+import { GraduationCap, Package, Settings, Megaphone, TrendingUp, Sparkles } from 'lucide-react';
 
 const results = [
   {
@@ -9,12 +9,9 @@ const results = [
     revenue: '270 000 ₽',
     subtext: 'Раньше таргет давал 10 лидов.',
     icon: GraduationCap,
-    gradient: 'from-violet-500 to-purple-600',
-    bgGradient: 'from-violet-500/15 to-violet-500/5',
-    iconBg: 'bg-violet-500/15',
-    iconColor: 'text-violet-500',
-    borderColor: 'border-violet-500/20',
-    glowColor: 'violet',
+    gradient: 'from-violet-400 to-purple-500',
+    glowColor: 'primary',
+    borderColor: 'border-violet-500/30',
   },
   {
     name: 'Марина В.',
@@ -23,12 +20,9 @@ const results = [
     revenue: '1.8 млн ₽',
     subtext: 'Менеджер больше не пишет в холодную.',
     icon: Package,
-    gradient: 'from-amber-500 to-orange-500',
-    bgGradient: 'from-amber-500/15 to-amber-500/5',
-    iconBg: 'bg-amber-500/15',
-    iconColor: 'text-amber-500',
-    borderColor: 'border-amber-500/20',
-    glowColor: 'amber',
+    gradient: 'from-amber-400 to-orange-500',
+    glowColor: 'gold',
+    borderColor: 'border-amber-500/30',
   },
   {
     name: 'Игорь М.',
@@ -37,12 +31,9 @@ const results = [
     revenue: '950 000 ₽',
     subtext: 'за месяц. Окупили внедрение с первой же продажи.',
     icon: Settings,
-    gradient: 'from-emerald-500 to-green-600',
-    bgGradient: 'from-emerald-500/15 to-emerald-500/5',
-    iconBg: 'bg-emerald-500/15',
-    iconColor: 'text-emerald-500',
-    borderColor: 'border-emerald-500/20',
-    glowColor: 'emerald',
+    gradient: 'from-emerald-400 to-green-500',
+    glowColor: 'green',
+    borderColor: 'border-emerald-500/30',
   },
   {
     name: 'Дмитрий П.',
@@ -51,12 +42,9 @@ const results = [
     revenue: '+600 000 ₽',
     subtext: '',
     icon: Megaphone,
-    gradient: 'from-sky-500 to-blue-600',
-    bgGradient: 'from-sky-500/15 to-sky-500/5',
-    iconBg: 'bg-sky-500/15',
-    iconColor: 'text-sky-500',
-    borderColor: 'border-sky-500/20',
-    glowColor: 'sky',
+    gradient: 'from-pink-400 to-rose-500',
+    glowColor: 'pink',
+    borderColor: 'border-pink-500/30',
   },
 ];
 
@@ -64,31 +52,34 @@ const ResultsSection = () => {
   const [ref, isInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
 
   return (
-    <section id="results" className="section-padding relative overflow-hidden bg-background">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+    <section id="results" className="section-padding relative overflow-hidden bg-secondary">
+      {/* Neon border */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
       
-      {/* Background blobs */}
-      <div className="absolute top-20 -right-40 w-[500px] h-[500px] bg-violet-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 -left-40 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl" />
+      {/* Background neon blobs */}
+      <div className="absolute top-20 -right-60 w-[600px] h-[600px] bg-violet-500/10 rounded-full blur-[150px]" />
+      <div className="absolute bottom-20 -left-60 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[150px]" />
+      
+      {/* Particles */}
+      <div className="absolute inset-0 particles opacity-40" />
       
       <div className="container-custom" ref={ref}>
         {/* Section header */}
         <div className="text-center mb-20">
           <div
-            className={`inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 border border-primary/20 rounded-full mb-6 transition-all duration-700 ${
+            className={`inline-flex items-center gap-2 px-5 py-2.5 glass-card glow-sm mb-6 transition-all duration-700 ${
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <TrendingUp className="w-4 h-4 text-primary" />
+            <TrendingUp className="w-4 h-4 text-neon-green" />
             <span className="text-sm font-semibold text-foreground">Реальные результаты</span>
           </div>
           <h2
-            className={`text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 tracking-tight transition-all duration-700 ${
+            className={`text-4xl md:text-5xl lg:text-7xl font-display font-black mb-6 tracking-tight transition-all duration-700 ${
               isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            Результаты <span className="text-gradient-primary">клиентов</span>
+            Результаты <span className="text-gradient-neon text-glow">клиентов</span>
           </h2>
           <p
             className={`text-lg text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-100 ${
@@ -99,7 +90,7 @@ const ResultsSection = () => {
           </p>
         </div>
 
-        {/* 2x2 Grid */}
+        {/* 2x2 Grid with neon cards */}
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {results.map((result, index) => {
             const IconComponent = result.icon;
@@ -111,33 +102,26 @@ const ResultsSection = () => {
                 }`}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
               >
-                {/* Card with gradient border effect */}
-                <div className="relative p-8 bg-card border border-border rounded-2xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 gradient-border overflow-hidden">
-                  {/* Gradient overlay on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${result.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                  
-                  {/* Glow effect on hover */}
-                  <div 
-                    className="absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
-                    style={{ 
-                      background: `linear-gradient(135deg, var(--${result.glowColor}-500, hsl(var(--primary))) 0%, transparent 100%)`,
-                      opacity: 0
-                    }}
-                  />
+                {/* Card with neon border effect */}
+                <div className={`relative p-8 glass-card-strong neon-border transition-all duration-500 hover:-translate-y-3 overflow-hidden ${result.borderColor}`}>
+                  {/* Neon glow on hover */}
+                  <div className="absolute -inset-1 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
                   
                   {/* Content */}
                   <div className="relative">
-                    {/* Revenue badge - prominent */}
-                    <div className={`absolute -top-4 -right-4 px-5 py-2.5 bg-card border-2 ${result.borderColor} rounded-xl shadow-xl group-hover:scale-105 transition-transform duration-300`}>
-                      <span className={`text-xl md:text-2xl font-display font-bold bg-gradient-to-r ${result.gradient} bg-clip-text text-transparent`}>
+                    {/* Revenue badge - prominent with neon */}
+                    <div className={`absolute -top-4 -right-4 px-5 py-2.5 glass-card border ${result.borderColor} rounded-xl glow-sm group-hover:scale-105 transition-transform duration-300`}>
+                      <span className={`text-xl md:text-2xl font-display font-black bg-gradient-to-r ${result.gradient} bg-clip-text text-transparent`}>
                         {result.revenue}
                       </span>
                     </div>
 
                     {/* Header */}
                     <div className="flex items-center gap-4 mb-6">
-                      <div className={`w-16 h-16 rounded-2xl ${result.iconBg} border ${result.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent className={`w-7 h-7 ${result.iconColor}`} />
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${result.gradient} bg-opacity-20 border ${result.borderColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 glow-sm`}
+                        style={{ background: `linear-gradient(135deg, hsl(var(--${result.glowColor === 'primary' ? 'primary' : result.glowColor === 'green' ? 'neon-green' : result.glowColor === 'pink' ? 'neon-pink' : 'gold'}) / 0.2), transparent)` }}
+                      >
+                        <IconComponent className={`w-7 h-7 bg-gradient-to-r ${result.gradient} bg-clip-text`} style={{ color: result.glowColor === 'primary' ? 'hsl(var(--primary))' : result.glowColor === 'green' ? 'hsl(var(--neon-green))' : result.glowColor === 'pink' ? 'hsl(var(--neon-pink))' : 'hsl(var(--gold))' }} />
                       </div>
                       <div>
                         <div className="font-display font-bold text-foreground text-lg">{result.name}</div>
@@ -160,6 +144,16 @@ const ResultsSection = () => {
               </div>
             );
           })}
+        </div>
+        
+        {/* Bottom CTA hint */}
+        <div className={`text-center mt-16 transition-all duration-700 ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`} style={{ transitionDelay: '800ms' }}>
+          <div className="inline-flex items-center gap-2 text-muted-foreground">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span>Ваш бизнес может быть следующим</span>
+          </div>
         </div>
       </div>
     </section>
