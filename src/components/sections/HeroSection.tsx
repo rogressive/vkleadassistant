@@ -167,10 +167,10 @@ const HeroSection = () => {
                 {/* VK-style Chat list */}
                 <div className="divide-y divide-border/20">
                   {[
-                    { name: 'Александр М.', emoji: '🔥', message: 'Вы: Здравствуйте!) Актуально ли...', time: '2м', hot: true, read: true },
-                    { name: 'Елена К.', emoji: '💼', message: 'Сколько стоит внедрение CRM?', time: '5м', hot: true, read: false },
-                    { name: 'Дмитрий В.', emoji: '', message: 'Вы: Добрый день! Интересует оп...', time: '12м', hot: false, read: true },
-                    { name: 'Ольга П.', emoji: '', message: 'Можно подробнее о сроках?', time: '18м', hot: false, read: false },
+                    { name: 'Александр М.', emoji: '🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', hot: true, avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=48&h=48&fit=crop&crop=face' },
+                    { name: 'Елена К.', emoji: '💼', message: 'Сколько стоит внедрение CRM?', time: '5м', hot: true, avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=48&h=48&fit=crop&crop=face' },
+                    { name: 'Дмитрий В.', emoji: '', message: 'Добрый день! Интересует оптовая...', time: '12м', hot: false, avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face' },
+                    { name: 'Ольга П.', emoji: '', message: 'Можно подробнее о сроках?', time: '18м', hot: false, avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=48&h=48&fit=crop&crop=face' },
                   ].map((chat, index) => (
                     <div 
                       key={index} 
@@ -183,13 +183,13 @@ const HeroSection = () => {
                         transitionDelay: `${600 + index * 100}ms`
                       }}
                     >
-                      {/* Round avatar */}
-                      <div className={`relative w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
-                        chat.hot 
-                          ? 'bg-gradient-to-br from-primary to-neon-pink text-primary-foreground' 
-                          : 'bg-gradient-to-br from-muted to-card text-muted-foreground'
-                      }`}>
-                        {chat.name[0]}
+                      {/* Round avatar with photo */}
+                      <div className="relative w-12 h-12 rounded-full shrink-0">
+                        <img 
+                          src={chat.avatar} 
+                          alt={chat.name}
+                          className="w-full h-full rounded-full object-cover"
+                        />
                         {chat.hot && (
                           <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-neon-green border-2 border-[#1a1a2e]" />
                         )}
@@ -200,12 +200,7 @@ const HeroSection = () => {
                             {chat.name}
                             {chat.emoji && <span>{chat.emoji}</span>}
                           </span>
-                          <div className="flex items-center gap-1.5">
-                            {chat.read && (
-                              <CheckCheck className="w-4 h-4 text-primary" />
-                            )}
-                            <span className="text-xs text-muted-foreground">{chat.time}</span>
-                          </div>
+                          <span className="text-xs text-muted-foreground">{chat.time}</span>
                         </div>
                         <p className="text-sm text-muted-foreground truncate">{chat.message}</p>
                       </div>
@@ -253,24 +248,25 @@ const HeroSection = () => {
               {/* VK Messages - only 2 for mobile */}
               <div className="divide-y divide-border/20">
                 {[
-                  { name: 'Александр 🔥', message: 'Вы: Здравствуйте!)', time: '2м', read: true },
-                  { name: 'Елена 💼', message: 'Сколько стоит CRM?', time: '5м', read: false },
+                  { name: 'Александр 🔥', message: 'Здравствуйте!) Актуально ли...', time: '2м', avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=36&h=36&fit=crop&crop=face' },
+                  { name: 'Елена 💼', message: 'Сколько стоит CRM?', time: '5м', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=36&h=36&fit=crop&crop=face' },
                 ].map((chat, index) => (
                   <div 
                     key={index} 
                     className="px-3 py-2.5 flex items-center gap-2.5 bg-primary/[0.04]"
                   >
-                    <div className="relative w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0 bg-gradient-to-br from-primary to-neon-pink text-primary-foreground">
-                      {chat.name[0]}
+                    <div className="relative w-9 h-9 rounded-full shrink-0">
+                      <img 
+                        src={chat.avatar} 
+                        alt={chat.name}
+                        className="w-full h-full rounded-full object-cover"
+                      />
                       <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-neon-green border-2 border-[#1a1a2e]" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <span className="font-medium text-foreground text-xs">{chat.name}</span>
-                        <div className="flex items-center gap-1">
-                          {chat.read && <CheckCheck className="w-3 h-3 text-primary" />}
-                          <span className="text-[10px] text-muted-foreground">{chat.time}</span>
-                        </div>
+                        <span className="text-[10px] text-muted-foreground">{chat.time}</span>
                       </div>
                       <p className="text-[11px] text-muted-foreground truncate">{chat.message}</p>
                     </div>
