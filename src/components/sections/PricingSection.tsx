@@ -46,9 +46,22 @@ const PricingSection = () => {
               ))}
             </ul>
 
-            <div className="p-4 rounded-xl bg-secondary/50 mb-6 text-center">
-              <div className="text-sm text-muted-foreground mb-2">Подписка на AI:</div>
-              <div className="font-display font-bold text-foreground">1 100 — 1 800 ₽/мес</div>
+            <div className="p-4 rounded-xl bg-secondary/50 mb-6">
+              <div className="text-sm text-muted-foreground mb-3 text-center">Ежемесячные расходы:</div>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Сервер (VPS)</span>
+                  <span className="text-foreground">~300 ₽/мес</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">API GPT</span>
+                  <span className="text-foreground">700–1 500 ₽/мес</span>
+                </div>
+                <div className="flex justify-between pt-2 border-t border-border">
+                  <span className="font-medium text-foreground">Итого</span>
+                  <span className="font-display font-bold text-accent">1 000–2 000 ₽/мес</span>
+                </div>
+              </div>
             </div>
 
             <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold text-lg py-6 pulse-glow">
